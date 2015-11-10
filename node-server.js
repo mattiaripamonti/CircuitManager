@@ -20,6 +20,7 @@ app.use(morgan('dev'));
 
 // serve up static assets
 app.use(express.static(path.join(__dirname, '/webapp')));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 // development only
 if ('development' === app.get('env')) {
