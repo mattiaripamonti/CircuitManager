@@ -1,0 +1,25 @@
+# Apple file
+.DS_STORE
+
+# npm
+/node_modules/
+
+# bower
+/bower_components/*
+
+# gulp build
+/war/
+/dist/
+
+# web storm
+/.idea/
+#report babelcee
+/report/*
+.tmp/
+/nbproject/private/
+
+# NetBeans
+.project
+nbproject/*
+
+/app/locales/
