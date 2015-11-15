@@ -3,7 +3,7 @@
  */
 
 
-angular.module('controllers').controller('Ctrl',[
+angular.module('controllers').controller('loginCtrl',[
     '$rootScope','$scope','$location',
     function ($rootScope,$scope,$location) {
 
