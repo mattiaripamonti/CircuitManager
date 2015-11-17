@@ -4,7 +4,9 @@ angular.module('CircuitManager', [
     'CircuitManager.login',
     'CircuitManager.security',
     'CircuitManager.registration',
-    'CircuitManager.dashboard'
+    'CircuitManager.dashboard',
+    'CircuitManager.menuleft',
+    'ui.bootstrap'
 ])
 
     .config(['$routeProvider', function ($routeProvider) {

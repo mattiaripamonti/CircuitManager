@@ -1,40 +1,16 @@
-<div class="dashboard-page">
-	<snap-drawer>
-		<div class="snap-menu">
-			<div class="sidebar-header text-center">
-				<img src="../images/flat-avatar.png" alt="" class="sidebar-img img-circle">
-			</div>
-			<ul class="snap-ul">
-				<li><a>DASHBOARD</a></li>
-				<li><a>IMPOSTA SCHEDA</a></li>
-				<li><a>SCHEDE COMPILATE</a></li>
-				<li><a>INSERISCI ESERCIZI</a></li>
-			</ul>
-		</div>
-	</snap-drawer>
-	<snap-dragger></snap-dragger>
-	<snap-content snap-opt-tap-to-close="false">
+<div ng-controller="DashCtrl" class="dashboard-page">
+    <div class="fr">
+        <h2>{{user_auth}} <small>Why is Versatile Theme so awesome?</small></h2>
+    </div>
 
-		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
-			<span class="menutoggle">
-				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
-				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
-			</span>
-		</a>
-		
-		<div class="fr">
-		<h2>{{user_auth}} <small>Why is Versatile Theme so awesome?</small></h2>
-		</div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Dashboard</h1>
+            I don't want to bloat this Versatile Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
+            <p>
+                <a class="btn btn-primary btn-lg btn-white">Inserisci Esercizi</a>
+            </p>
 
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Dashboard</h1>
-				I don't want to bloat this Versatile Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
-				<p>
-					<a class="btn btn-primary btn-lg btn-white">Inserisci Esercizi</a>
-				</p>
-				
-			</div>
-		</div>
-	</snap-content>	
+        </div>
+    </div>
 </div>
