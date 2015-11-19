@@ -5,6 +5,7 @@ angular.module('CircuitManager', [
     'CircuitManager.security',
     'CircuitManager.registration',
     'CircuitManager.dashboard',
+    'CircuitManager.ins_esercizi',
     'CircuitManager.menuleft',
     'ui.bootstrap'
 ])

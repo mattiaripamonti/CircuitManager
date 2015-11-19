@@ -1,11 +1,12 @@
 /**
  * Created by Mattia on 15/11/2015.
  */
-angular.module('CircuitManager.dashboard', ['firebase.utils', 'firebase.auth', 'ngRoute','LocalStorageModule','snap'])
+angular.module('CircuitManager.dashboard', ['firebase.utils', 'firebase.auth', 'ngRoute','LocalStorageModule'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.whenAuthenticated('/dashboard', {
-            templateUrl: 'pages/dashboard/dashboard.html'
+            controller: 'menuleftCtrl',
+            templateUrl: 'pages/menu-left/menu-left.html'
         });
     }])
 

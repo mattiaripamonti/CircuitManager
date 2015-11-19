@@ -25,7 +25,7 @@ angular.module('CircuitManager.login', ['firebase.utils', 'firebase.auth', 'ngRo
                     .then(function(data) {
                         console.log(data);
                         localStorageService.set('user_auth', data.name);
-                        $location.path('/dashboard');
+                        $location.path('/main');
                     });
             }, function(err) {
               $scope.err = errMessage(err);

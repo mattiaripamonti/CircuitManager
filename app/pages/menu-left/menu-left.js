@@ -5,7 +5,7 @@
 angular.module('CircuitManager.menuleft', ['firebase.utils', 'firebase.auth', 'ngRoute','snap'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.whenAuthenticated('/dashboard', {
+        $routeProvider.whenAuthenticated('/main', {
             controller: 'menuleftCtrl',
             templateUrl: 'pages/menu-left/menu-left.html'
         });
@@ -13,7 +13,15 @@ angular.module('CircuitManager.menuleft', ['firebase.utils', 'firebase.auth', 'n
 
     .controller('menuleftCtrl', ['$scope', 'Auth', '$location','snapRemote', function($scope, Auth, $location,snapRemote) {
 
-        $scope.active_link = { template: "pages/dashboard/dashboard.html" };
+        function get_page(location){
+            if (location != '/main'){
+                $scope.active_link = { template: "pages"+location+location+".html" };
+            } else {
+                $scope.active_link = { template: 'pages/dashboard/dashboard.html' };
+            }
+        }
+
+        get_page($location.path());
 
         $scope.logout = function() {
             Auth.$unauth();
