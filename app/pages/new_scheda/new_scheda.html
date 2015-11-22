@@ -1,0 +1,40 @@
+<div ng-controller="New_SchedaCtrl" class="dashboard-page">
+    <div class="fr">
+        <h2>{{user_auth}} <small>Imposta Scheda</small></h2>
+    </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="list-group">
+                        <a ng-repeat="exs in exs_list" ng-click="expand_exs(exs)" class="list-group-item active">
+                            <h4 class="list-group-item-heading">{{exs.titolo}}</h4>
+                            <p class="list-group-item-text">{{exs.categoria}}</p>
+                            <p class="list-group-item-text">{{exs.descrizione}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <p>{{exs_detail.titolo}}</p>
+                        <p>{{exs_detail.autore}}</p>
+                        <p>{{exs_detail.categoria}}</p>
+                        <p>{{exs_detail.data_agg | date:'dd/MM/yyyy'}}</p>
+                        <p>{{exs_detail.diff}}</p>
+                        <p>{{exs_detail.descrizione}}</p>
+                        <p>{{exs_detail.tips}}</p>
+                        <p>{{exs_detail.altro}}</p>
+                        <p>{{exs_detail.attrezzi}}</p>
+                    </div>
+                    <div>
+                        SCHEDA
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

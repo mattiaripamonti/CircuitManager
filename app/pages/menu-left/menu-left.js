@@ -16,6 +16,7 @@ angular.module('CircuitManager.menuleft', ['firebase.utils', 'firebase.auth', 'n
         function get_page(location){
             if (location != '/main'){
                 $scope.active_link = { template: "pages"+location+location+".html" };
+                $location.path(location);
             } else {
                 $scope.active_link = { template: 'pages/dashboard/dashboard.html' };
             }
@@ -30,6 +31,7 @@ angular.module('CircuitManager.menuleft', ['firebase.utils', 'firebase.auth', 'n
 
         $scope.change_page = function(content) {
             $scope.active_link = { template: "pages/"+content+"/"+content+".html" };
+            $location.path("/"+content);
             snapRemote.close();
             $scope.menuOpen = false;
         };

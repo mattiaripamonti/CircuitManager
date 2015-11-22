@@ -10,7 +10,7 @@ angular.module('CircuitManager.ins_esercizi', ['firebase.utils', 'firebase.auth'
         });
     }])
 
-    .controller('Ins_EserciziCtrl', ['$scope', 'Auth', '$location','localStorageService', function($scope, Auth, $location, localStorageService) {
+    .controller('Ins_EserciziCtrl', ['$scope', '$location','localStorageService','fbutil', function($scope, $location, localStorageService,fbutil) {
 
         $scope.exs_form = {};
 
@@ -31,43 +31,22 @@ angular.module('CircuitManager.ins_esercizi', ['firebase.utils', 'firebase.auth'
 
         $scope.insEsercizio = function(){
             $scope.err = null;
-            $scope.exs_form.attrezzi = $.map($scope.exs_form.attrezzi, function(value, index) {
-                console.log(value);
-                console.log(value.tipo);
-                console.log(value.quantita);
-                var json = {[value.tipo]: value.quantita};
-                return json
-            });
 
+            $scope.exs_form.attrezzi = $.map($scope.exs_form.attrezzi, function(value, index) {
+               return {id: value.id, quantita: value.quantita, tipo:value.tipo}
+            });
+            var data_corr = new Date();
+            $scope.exs_form.data_agg = data_corr.getTime().toString();
             console.log($scope.exs_form);
-            //if( assertValidAccountProps() ) {
-            //    var name = $scope.name;
-            //    var email = $scope.email;
-            //    var pass = $scope.pass;
-            //    // create user credentials in Firebase auth system
-            //    Auth.$createUser({email: email, password: pass})
-            //        .then(function() {
-            //            // authenticate so we have permission to write to Firebase
-            //            return Auth.$authWithPassword({email: email, password: pass });
-            //        })
-            //        .then(function(user) {
-            //            console.log(user);
-            //            // create a user profile in our data store
-            //            var ref = fbutil.ref('web/users', user.uid);
-            //            return fbutil.handler(function(cb) {
-            //                ref.set({email: email, name: name}, cb);
-            //            });
-            //        })
-            //        .then(function(/* user */) {
-            //            // redirect to the dashboard page
-            //            $location.path('/login');
-            //        }, function(err) {
-            //            $scope.err = errMessage(err);
-            //        });
-            //}
+
+            var ref = fbutil.ref('web/ct/esercizi');
+                return fbutil.handler(function(cb) {
+                    ref.push().set($scope.exs_form, cb);
+                });
+
         };
 
-        function assertValidAccountProps() {
+        function assertValidExsProps() {
             if( !$scope.email ) {
                 $scope.err = 'Please enter an email address';
             }

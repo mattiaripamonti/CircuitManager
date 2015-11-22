@@ -7,6 +7,8 @@ angular.module('CircuitManager', [
     'CircuitManager.dashboard',
     'CircuitManager.ins_esercizi',
     'CircuitManager.menuleft',
+    'CircuitManager.schede_comp',
+    'CircuitManager.new_scheda',
     'ui.bootstrap'
 ])
 
