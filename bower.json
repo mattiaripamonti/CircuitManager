@@ -29,7 +29,8 @@
     "components-font-awesome": "~4.3.0",
     "angular-snap": "~1.8.1",
     "font-awesome": "fontawesome#~4.4.0",
-    "angular-local-storage": "~0.2.3"
+    "angular-local-storage": "~0.2.3",
+    "angular-dragdrop": "~1.0.12"
   },
   "resolutions": {
     "angular": "^1.4.7"

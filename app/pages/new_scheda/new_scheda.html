@@ -7,8 +7,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="list-group">
-                        <a ng-repeat="exs in exs_list" ng-click="expand_exs(exs)" class="list-group-item active">
+                    <div class="list-group" data-drop="true" ng-model='exs_list' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=exs_list])'}" jqyoui-droppable="{index: $index}">
+                        <a ng-repeat="exs in exs_list" ng-click="expand_exs(exs)" data-drag="true" data-jqyoui-options="{revert: 'invalid'}"  ng-model="exs_list" jqyoui-draggable="{index:$index,animate:true}" class="list-group-item active btn-draggable">
                             <h4 class="list-group-item-heading">{{exs.titolo}}</h4>
                             <p class="list-group-item-text">{{exs.categoria}}</p>
                             <p class="list-group-item-text">{{exs.descrizione}}</p>
@@ -28,7 +28,62 @@
                         <p>{{exs_detail.attrezzi}}</p>
                     </div>
                     <div>
-                        SCHEDA
+                        <div class="form-content">
+                            <form role="form" class="bottom-75">
+                                <div class="table-form">
+                                    <div class="form-groups">
+                                        <div class="form-group">
+                                            <label>TITOLO</label>
+                                            <input type="text" ng-model="scheda_form.titolo" class="form-control input-lg" placeholder="TITOLO">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>AUTORE</label>
+                                            <input type="text" ng-model="scheda_form.autore" class="form-control input-lg" placeholder="AUTORE">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>CATEGORIA</label>
+                                            <select class="form-control input-lg" name="categoria" ng-model="scheda_form.categoria">
+                                                <option value="Pliometria">Pliometria</option>
+                                                <option value="Vel. e Cap. Ritmiche">Vel. e Cap. Ritmiche</option>
+                                                <option value="Mob. Articolare">Mob. Articolare</option>
+                                                <option value="Potenziamento">Potenziamento</option>
+                                                <option value="Cap. Coordinative">Cap. Coordinative</option>
+                                                <option value="Mista">Mista</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>DESCRIZIONE</label>
+                                            <textarea type="text" ng-model="scheda_form.descrizione" class="form-control input-lg" placeholder="DESCRIZIONE"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ATTREZZI</label>
+                                           {{scheda_form.tot_attrezzi}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>DIFF</label>
+                                            {{scheda_form.diff}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ESERCIZI</label>
+                                            <div class="list-group" style="min-height:200px" data-drop="true" ng-model="exs_scheda" data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=exs_scheda])'}" jqyoui-droppable="{multiple:true}">
+                                                    <a ng-repeat="exs in exs_scheda" data-drag="true" data-jqyoui-options="{revert: 'invalid'}"  ng-model="exs_scheda" jqyoui-draggable="{index: $index,animate:true}" class="list-group-item active btn-draggable">
+                                                        <h4 class="list-group-item-heading">{{exs.titolo}}</h4>
+                                                        <p class="list-group-item-text">{{exs.categoria}}</p>
+                                                        <p class="list-group-item-text">{{exs.descrizione}}</p>
+                                                    </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="button-container">
+                                        <button type="submit" ng-click="insScheda()" class="btn btn-default">Inserisci Scheda</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <p ng-show="err" class="error">{{err}}</p>
+
+                        </div>
                     </div>
 
                 </div>
