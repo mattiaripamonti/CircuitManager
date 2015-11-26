@@ -8,14 +8,41 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="list-group">
-                        <a ng-repeat="scheda in schede_comp" class="list-group-item active">
+                        <a ng-repeat="scheda in schede_comp" ng-click="expand_scheda(scheda)" class="list-group-item active">
                             <h4 class="list-group-item-heading">{{scheda.titolo}}</h4>
                             <p class="list-group-item-text">{{scheda.categoria}}</p>
                             <p class="list-group-item-text">{{scheda.descrizione}}</p>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6">.col-md-6</div>
+                <div class="col-md-6">
+                    <div>
+                        <p>{{scheda_detail.titolo}}</p>
+                        <p>{{scheda_detail.autore}}</p>
+                        <p>{{scheda_detail.categoria}}</p>
+                        <p>{{scheda_detail.data_agg | date:'dd/MM/yyyy'}}</p>
+                        <p>{{scheda_detail.diff}}</p>
+                        <p>{{scheda_detail.descrizione}}</p>
+                        <ul class="list-group">
+                            <li ng-repeat="attrezzi in scheda_detail.tot_attrezzi" style="color:black" class="list-group-item">
+                                <span class="badge">{{attrezzi.quantita}}</span>
+                                {{attrezzi.tipo}}
+                            </li>
+                        </ul>
+                        <uib-accordion close-others="true">
+                            <uib-accordion-group ng-repeat="exs in scheda_exs" heading="exs.titolo">
+                                <p>{{exs.autore}}</p>
+                                <p>{{exs.categoria}}</p>
+                                <p>{{exs.data_agg | date:'dd/MM/yyyy'}}</p>
+                                <p>{{exs.diff}}</p>
+                                <p>{{exs.descrizione}}</p>
+                                <p>{{exs.tips}}</p>
+                                <p>{{exs.altro}}</p>
+                                <p>{{exs.attrezzi}}</p>
+                            </uib-accordion-group>
+                        </uib-accordion>
+                    </div>
+                </div>
             </div>
 
 
