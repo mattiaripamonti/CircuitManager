@@ -25,7 +25,14 @@
                         <p>{{exs_detail.descrizione}}</p>
                         <p>{{exs_detail.tips}}</p>
                         <p>{{exs_detail.altro}}</p>
-                        <p>{{exs_detail.attrezzi}}</p>
+                        <p>
+                        <ul class="list-group">
+                            <li ng-repeat="attrezzi in exs_detail.attrezzi" style="color:black" class="list-group-item">
+                                <span class="badge">{{attrezzi.quantita}}</span>
+                                {{attrezzi.tipo}}
+                            </li>
+                        </ul>
+                        </p>
                     </div>
                     <div>
                         <div class="form-content">
@@ -57,7 +64,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label>ATTREZZI</label>
-                                           {{scheda_form.tot_attrezzi}}
+                                            <ul class="list-group">
+                                                <li ng-repeat="attrezzi in scheda_form.tot_attrezzi track by attrezzi.tipo" style="color:black" class="list-group-item">
+                                                    <span class="badge">{{attrezzi.quantita}}</span>
+                                                    {{attrezzi.tipo}}
+                                                </li>
+                                            </ul>
                                         </div>
                                         <div class="form-group">
                                             <label>DIFF</label>

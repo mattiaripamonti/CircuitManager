@@ -15,6 +15,9 @@ angular.module('CircuitManager.schede_comp', ['firebase.utils', 'ngRoute'])
         var ref = fbutil.ref('web/ct/schede');
         var list = $firebaseArray(ref);
 
+        var exs_ref = fbutil.ref('web/ct/esercizi');
+        var exs_array = $firebaseArray(exs_ref);
+
         list.$loaded()
             .then(function(schede) {
                $scope.schede_comp = schede;
@@ -28,14 +31,15 @@ angular.module('CircuitManager.schede_comp', ['firebase.utils', 'ngRoute'])
             $scope.scheda_exs = [];
 
             angular.forEach($scope.scheda_detail.id_es, function(value, key) {
-                var exs_ref = fbutil.ref('web/ct/esercizi/'+value.id);
-                var exs_array = $firebaseArray(exs_ref);
-                //TODO normalizzare la vista esercizio prima del push
-                $scope.scheda_exs.push(exs_array)
+
+                exs_array.$loaded().then(function(x) {
+                    var exs = x.$getRecord(value.id);
+                    $scope.scheda_exs.push(exs)
+                }).catch(function(error) {
+                    console.log("Error:", error);
+                });
+
             });
-
-            console.log($scope.scheda_exs)
-
 
 
         }

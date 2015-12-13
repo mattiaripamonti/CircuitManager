@@ -88,7 +88,7 @@ angular.module('CircuitManager.new_scheda', ['firebase.utils', 'ngRoute', 'ngDra
 
         $scope.insScheda = function(){
             $scope.err = null;
-            
+
             var data_corr = new Date();
             $scope.scheda_form.data_agg = data_corr.getTime().toString();
 

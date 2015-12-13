@@ -1,0 +1,101 @@
+<div ng-controller="Mod_EserciziCtrl" class="dashboard-page">
+    <div class="fr">
+        <h2>{{user_auth}} <small>Modifica Esercizi</small></h2>
+    </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="list-group">
+                        <a ng-repeat="exs in exs_list" ng-click="expand_exs(exs)" class="list-group-item active">
+                            <h4 class="list-group-item-heading">{{exs.titolo}}</h4>
+                            <p class="list-group-item-text">{{exs.categoria}}</p>
+                            <p class="list-group-item-text">{{exs.descrizione}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-content">
+                        <form role="form" class="bottom-75">
+                            <div class="table-form">
+                                <div class="form-groups">
+                                    <div class="form-group">
+                                        <label>TITOLO</label>
+                                        <input type="text" ng-model="exs_form.titolo" class="form-control input-lg" placeholder="TITOLO">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>AUTORE</label>
+                                        <input type="text" ng-model="exs_form.autore" class="form-control input-lg" placeholder="AUTORE">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CATEGORIA</label>
+                                        <select class="form-control input-lg" name="categoria" ng-model="exs_form.categoria">
+                                            <option value="Pliometria">Pliometria</option>
+                                            <option value="Vel. e Cap. Ritmiche">Vel. e Cap. Ritmiche</option>
+                                            <option value="Mob. Articolare">Mob. Articolare</option>
+                                            <option value="Potenziamento">Potenziamento</option>
+                                            <option value="Cap. Coordinative">Cap. Coordinative</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>DIFFICOLTA'</label>
+                                        <select class="form-control input-lg" name="diff" ng-model="exs_form.diff">
+                                            <option value="Bassa">Bassa</option>
+                                            <option value="Media">Media</option>
+                                            <option value="Alta">Alta</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>DESCRIZIONE</label>
+                                        <textarea type="text" ng-model="exs_form.descrizione" class="form-control input-lg" placeholder="DESCRIZIONE"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>SUGGERIMENTI</label>
+                                        <textarea ng-model="exs_form.tips" class="form-control input-lg" placeholder="SUGGERIMENTI ALLENATORE"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ALTRO</label>
+                                        <textarea type="text" ng-model="exs_form.altro" class="form-control input-lg" placeholder="ALTRO"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ATTREZZI</label>
+                                        <fieldset  ng-repeat="attrezzo in exs_form.attrezzi">
+                                            <label>TIPO</label>
+                                            <select class="form-control input-lg" name="categoria" ng-model="attrezzo.tipo">
+                                                <option value="Scaletta">Scaletta</option>
+                                                <option value="Aste">Aste</option>
+                                                <option value="Coni">Coni</option>
+                                                <option value="Cerchi">Cerchi</option>
+                                                <option value="Corde">Corde</option>
+                                                <option value="Palle Mediche">Palle Mediche</option>
+                                                <option value="Plinti">Plinti</option>
+                                                <option value="Plinti Alti">Plinti Alti</option>
+                                                <option value="Pesi">Pesi</option>
+                                                <option value="Ostacoli">Ostacoli</option>
+                                            </select>
+                                            <label>QUANTITA'</label>
+                                            <input type="text" ng-model="attrezzo.quantita" class="form-control input-lg" placeholder="QUANTITA'">
+                                            <button class="remove" ng-show="$last" ng-click="remove_attrezzo()">-</button>
+                                        </fieldset>
+                                        <button type="submit" ng-click="add_attrezzo()" class="btn btn-default">Aggiungi Attrezzo</button>
+                                    </div>
+
+                                </div>
+                                <div class="button-container">
+                                    <button type="submit" ng-click="modEsercizio()" class="btn btn-default">Modifica Esercizio</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <p ng-show="err" class="error">{{err}}</p>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

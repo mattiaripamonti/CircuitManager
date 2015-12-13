@@ -30,7 +30,7 @@
                             </li>
                         </ul>
                         <uib-accordion close-others="true">
-                            <uib-accordion-group ng-repeat="exs in scheda_exs" heading="exs.titolo">
+                            <uib-accordion-group ng-repeat="exs in scheda_exs" style="color: black" heading="{{exs.titolo}}">
                                 <p>{{exs.autore}}</p>
                                 <p>{{exs.categoria}}</p>
                                 <p>{{exs.data_agg | date:'dd/MM/yyyy'}}</p>
@@ -38,7 +38,14 @@
                                 <p>{{exs.descrizione}}</p>
                                 <p>{{exs.tips}}</p>
                                 <p>{{exs.altro}}</p>
-                                <p>{{exs.attrezzi}}</p>
+                                <p>
+                                    <ul class="list-group">
+                                        <li ng-repeat="attrezzi in scheda_exs.tot_attrezzi" style="color:black" class="list-group-item">
+                                            <span class="badge">{{attrezzi.quantita}}</span>
+                                            {{attrezzi.tipo}}
+                                        </li>
+                                    </ul>
+                                </p>
                             </uib-accordion-group>
                         </uib-accordion>
                     </div>
